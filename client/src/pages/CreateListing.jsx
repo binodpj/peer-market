@@ -10,7 +10,7 @@ import { useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 
 const CreateListing = () => {
   const [category, setCategory] = useState("");
@@ -145,12 +145,12 @@ const CreateListing = () => {
       <Navbar />
 
       <div className="create-listing">
-        <h1>Publish Your Place</h1>
+        <h1>Sell your Product</h1>
         <form onSubmit={handlePost}>
           <div className="create-listing_step1">
-            <h2>Step 1: Tell us about your place</h2>
+            <h2>Step 1: Tell us about your product</h2>
             <hr />
-            <h3>Which of these categories best describes your place?</h3>
+            <h3>Which of these categories best describes your product?</h3>
             <div className="category-list">
               {categories?.map((item, index) => (
                 <div
@@ -166,7 +166,7 @@ const CreateListing = () => {
               ))}
             </div>
 
-            <h3>What type of place will guests have?</h3>
+            {/* <h3>What type of place will guests have?</h3>
             <div className="type-list">
               {types?.map((item, index) => (
                 <div
@@ -181,9 +181,9 @@ const CreateListing = () => {
                   <div className="type_icon">{item.icon}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
 
-            <h3>Where's your place located?</h3>
+            <h3>Your Address?</h3>
             <div className="full">
               <div className="location">
                 <p>Street Address</p>
@@ -248,7 +248,7 @@ const CreateListing = () => {
               </div>
             </div>
 
-            <h3>Share some basics about your place</h3>
+            {/* <h3>Share some basics about your place</h3>
             <div className="basics">
               <div className="basic">
                 <p>Guests</p>
@@ -357,11 +357,11 @@ const CreateListing = () => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="create-listing_step2">
-            <h2>Step 2: Make your place stand out</h2>
+            {/* <h2>Step 2: Make your place stand out</h2>
             <hr />
 
             <h3>Tell guests what your place has to offer</h3>
@@ -378,9 +378,9 @@ const CreateListing = () => {
                   <p>{item.name}</p>
                 </div>
               ))}
-            </div>
+            </div> */}
 
-            <h3>Add some photos of your place</h3>
+            <h3>Add some photos of your product</h3>
             <DragDropContext onDragEnd={handleDragPhoto}>
               <Droppable droppableId="photos" direction="horizontal">
                 {(provided) => (
@@ -460,7 +460,7 @@ const CreateListing = () => {
               </Droppable>
             </DragDropContext>
 
-            <h3>What make your place attractive and exciting?</h3>
+            <h3>What make your product attractive and exciting?</h3>
             <div className="description">
               <p>Title</p>
               <input
@@ -499,7 +499,7 @@ const CreateListing = () => {
                 required
               />
               <p>Now, set your PRICE</p>
-              <span>$</span>
+              <span>Rs. </span>
               <input
                 type="number"
                 placeholder="100"

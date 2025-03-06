@@ -1,11 +1,10 @@
-import "../styles/Slide.scss"
+import "../styles/Slide.scss";
 
 const Slide = () => {
   return (
     <div className="slide">
       <h1>
-        Welcome Home! Anywhere you roam <br /> Stay in the moment. Make your
-        memories
+        Welcome To PeerMarket! <br /> Where you can sell or buy Accessories
       </h1>
     </div>
   );

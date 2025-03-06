@@ -1,5 +1,5 @@
 import { categories } from "../data";
-import "../styles/Categories.scss"
+import "../styles/Categories.scss";
 import { Link } from "react-router-dom";
 
 const Categories = () => {
@@ -7,9 +7,8 @@ const Categories = () => {
     <div className="categories">
       <h1>Explore Top Categories</h1>
       <p>
-        Explore our wide range of vacation rentals that cater to all types of
-        travelers. Immerse yourself in the local culture, enjoy the comforts of
-        home, and create unforgettable memories in your dream destination.
+        Explore our wide range of categories of products that other sellers like
+        you selling on our platform
       </p>
 
       <div className="categories_list">

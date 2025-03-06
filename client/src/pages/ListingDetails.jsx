@@ -9,7 +9,7 @@ import { DateRange } from "react-date-range";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 
 const ListingDetails = () => {
   const [loading, setLoading] = useState(true);
@@ -38,8 +38,7 @@ const ListingDetails = () => {
     getListingDetails();
   }, []);
 
-  console.log(listing)
-
+  console.log(listing);
 
   /* BOOKING CALENDAR */
   const [dateRange, setDateRange] = useState([
@@ -60,9 +59,9 @@ const ListingDetails = () => {
   const dayCount = Math.round(end - start) / (1000 * 60 * 60 * 24); // Calculate the difference in day unit
 
   /* SUBMIT BOOKING */
-  const customerId = useSelector((state) => state?.user?._id)
+  const customerId = useSelector((state) => state?.user?._id);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
@@ -73,30 +72,43 @@ const ListingDetails = () => {
         startDate: dateRange[0].startDate.toDateString(),
         endDate: dateRange[0].endDate.toDateString(),
         totalPrice: listing.price * dayCount,
-      }
+      };
 
       const response = await fetch("http://localhost:3001/bookings/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(bookingForm)
-      })
+        body: JSON.stringify(bookingForm),
+      });
 
       if (response.ok) {
-        navigate(`/${customerId}/trips`)
+        navigate(`/${customerId}/trips`);
       }
     } catch (err) {
-      console.log("Submit Booking Failed.", err.message)
+      console.log("Submit Booking Failed.", err.message);
     }
-  }
+  };
+
+  const buttonStyle = {
+    margin: "15px 0",
+    padding: "10px 15px",
+    backgroundColor: "#e40046",
+    border: "none",
+    fontSize: "20px",
+    fontWeight: "600",
+    cursor: "pointer",
+    transition: "0.3s ease",
+    color: "white",
+    borderRadius: "10px",
+  };
 
   return loading ? (
     <Loader />
   ) : (
     <>
       <Navbar />
-      
+
       <div className="listing-details">
         <div className="title">
           <h1>{listing.title}</h1>
@@ -116,10 +128,10 @@ const ListingDetails = () => {
           {listing.type} in {listing.city}, {listing.province},{" "}
           {listing.country}
         </h2>
-        <p>
+        {/* <p>
           {listing.guestCount} guests - {listing.bedroomCount} bedroom(s) -{" "}
           {listing.bedCount} bed(s) - {listing.bathroomCount} bathroom(s)
-        </p>
+        </p> */}
         <hr />
 
         <div className="profile">
@@ -130,7 +142,7 @@ const ListingDetails = () => {
             )}`}
           />
           <h3>
-            Hosted by {listing.creator.firstName} {listing.creator.lastName}
+            Listed by {listing.creator.firstName} {listing.creator.lastName}
           </h3>
         </div>
         <hr />
@@ -144,7 +156,7 @@ const ListingDetails = () => {
         <hr />
 
         <div className="booking">
-          <div>
+          {/* <div>
             <h2>What this place offers?</h2>
             <div className="amenities">
               {listing.amenities[0].split(",").map((item, index) => (
@@ -159,10 +171,10 @@ const ListingDetails = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           <div>
-            <h2>How long do you want to stay?</h2>
+            {/* <h2>How long do you want to stay?</h2>
             <div className="date-range-calendar">
               <DateRange ranges={dateRange} onChange={handleSelect} />
               {dayCount > 1 ? (
@@ -182,7 +194,16 @@ const ListingDetails = () => {
               <button className="button" type="submit" onClick={handleSubmit}>
                 BOOKING
               </button>
-            </div>
+            </div> */}
+            <h2>Total price: Rs. {listing.price}</h2>
+            <button
+              className="button"
+              type="submit"
+              style={buttonStyle}
+              onClick={handleSubmit}
+            >
+              Buy Product
+            </button>
           </div>
         </div>
       </div>

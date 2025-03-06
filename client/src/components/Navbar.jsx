@@ -7,7 +7,6 @@ import "../styles/Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { setLogout } from "../redux/state";
 
-
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
 
@@ -15,14 +14,31 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
 
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="navbar">
-      <a href="/">
-        <img src="/assets/logo.png" alt="logo" />
+      <a
+        href="/"
+        style={{
+          textDecoration: "none",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "Arial",
+            fontSize: "36px",
+            fontWeight: "bold",
+            color: "#2d2d2d",
+            margin: 0,
+          }}
+        >
+          PeerMarket
+        </p>
       </a>
 
       <div className="navbar_search">
@@ -35,7 +51,9 @@ const Navbar = () => {
         <IconButton disabled={search === ""}>
           <Search
             sx={{ color: variables.pinkred }}
-            onClick={() => {navigate(`/properties/search/${search}`)}}
+            onClick={() => {
+              navigate(`/properties/search/${search}`);
+            }}
           />
         </IconButton>
       </div>
@@ -43,11 +61,11 @@ const Navbar = () => {
       <div className="navbar_right">
         {user ? (
           <a href="/create-listing" className="host">
-            Become A Host
+            Become A Seller
           </a>
         ) : (
           <a href="/login" className="host">
-            Become A Host
+            Become A Seller
           </a>
         )}
 
@@ -79,11 +97,11 @@ const Navbar = () => {
 
         {dropdownMenu && user && (
           <div className="navbar_right_accountmenu">
-            <Link to={`/${user._id}/trips`}>Trip List</Link>
+            <Link to={`/${user._id}/trips`}>Product List</Link>
             <Link to={`/${user._id}/wishList`}>Wish List</Link>
-            <Link to={`/${user._id}/properties`}>Property List</Link>
-            <Link to={`/${user._id}/reservations`}>Reservation List</Link>
-            <Link to="/create-listing">Become A Host</Link>
+            <Link to={`/${user._id}/properties`}>For Sale</Link>
+            <Link to={`/${user._id}/reservations`}>Items Bought</Link>
+            <Link to="/create-listing">Become A Seller</Link>
 
             <Link
               to="/login"

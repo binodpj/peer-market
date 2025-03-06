@@ -49,18 +49,20 @@ const ListingCard = ({
 
   const patchWishList = async () => {
     if (user?._id !== creator._id) {
-    const response = await fetch(
-      `http://localhost:3001/users/${user?._id}/${listingId}`,
-      {
-        method: "PATCH",
-        header: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    dispatch(setWishList(data.wishList));
-  } else { return }
+      const response = await fetch(
+        `http://localhost:3001/users/${user?._id}/${listingId}`,
+        {
+          method: "PATCH",
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      dispatch(setWishList(data.wishList));
+    } else {
+      return;
+    }
   };
 
   return (
@@ -113,7 +115,7 @@ const ListingCard = ({
         <>
           <p>{type}</p>
           <p>
-            <span>${price}</span> per night
+            <span>Rs. {price}</span>
           </p>
         </>
       ) : (
@@ -122,7 +124,7 @@ const ListingCard = ({
             {startDate} - {endDate}
           </p>
           <p>
-            <span>${totalPrice}</span> total
+            <span>Rs. {totalPrice}</span>
           </p>
         </>
       )}
